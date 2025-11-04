@@ -1,2 +1,2 @@
-# projeto_livraria
-projeto livraria virtual para a disciplina Engenharia de Software I
+# 📖 projeto Biblioteca Virtual
+projeto biblioteca virtual para a disciplina Engenharia de Software I
