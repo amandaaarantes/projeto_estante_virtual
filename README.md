@@ -1,6 +1,22 @@
-# 📖 projeto Estante Virtual 📖
-Projeto estante virtual para a disciplina Engenharia de Software I.
+# 🏷️ Release v1.0.0 - Estante Virtual COMPLETA
 
-A Estante Virtual funcionará como um acervo digital para uma biblioteca física. Com nosso sistema, será possível gerenciar os empréstimos e as multas do acervo. Além disso, um sistema de resenhas e avaliações em estrelas que funcionará como uma comunidade entre os leitores.
+## 🎯 Sistema com 4 CRUDs de Gerenciamento de Biblioteca
 
-a Release 00 está na branch "release00" !!
+### **✅ CRUDs Implementados:**
+- 👥 **Usuários** - Cadastro completo com perfis (Admin, Bibliotecário, Usuário)
+- 📚 **Livros** - Acervo digital com controle de status
+- 📖 **Empréstimos** - Sistema completo de empréstimos e devoluções
+- 💰 **Multas** - Controle de multas por atrasos
+
+### **🔧 Funcionalidades:**
+- ✅ Validações de regras de negócio (RF1-RF16)
+- ✅ Filtros e buscas avançadas
+- ✅ Navegação entre telas
+- ✅ Interface React
+
+### **🧪 Testes:**
+- ✅ Testes Selenium automatizados para todos os CRUDs
+- ✅ Testes de validação e regras de negócio
+
+### **📊 Status:**
+**SISTEMA FUNCIONAL**
