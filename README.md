@@ -1,6 +1,12 @@
-# 📖 projeto Estante Virtual 📖
-Projeto estante virtual para a disciplina Engenharia de Software I.
+# 🏷️ Release v0.3 - CRUDs Básicos
 
-A Estante Virtual funcionará como um acervo digital para uma biblioteca física. Com nosso sistema, será possível gerenciar os empréstimos e as multas do acervo. Além disso, um sistema de resenhas e avaliações em estrelas que funcionará como uma comunidade entre os leitores.
+## 🎯 Implementação dos 2 CRUDs Iniciais
 
-a Release 00 está na branch "release00" !!
+### **✅ Funcionalidades:**
+- 👥 **CRUD Usuários** - Cadastro, edição, listagem
+- 📚 **CRUD Livros** - Acervo básico com código único
+- 🔐 **Validações** - Senha forte, nickname único
+
+### **🛠️ Tecnologias:**
+- Frontend: React + TypeScript
+- Mock de dados em memória
