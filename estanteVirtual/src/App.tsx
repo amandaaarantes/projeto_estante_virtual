@@ -4,9 +4,11 @@ import BookList from './componentes/books/BookList';
 import LoanList from './componentes/loans/LoanList';
 import FineList from './componentes/fines/FineList';
 import ReviewList from './componentes/reviews/ReviewList'; 
+import ReportSelector from './componentes/reports/ReportSelector'; // NOVO COMPONENTE
 import Layout from './componentes/Layout';
 
-type CurrentScreen = 'users' | 'books' | 'loans' | 'fines' | 'reviews';
+// ATUALIZADO: Inclui 'reports'
+type CurrentScreen = 'users' | 'books' | 'loans' | 'fines' | 'reviews' | 'reports';
 
 const App: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<CurrentScreen>('users'); 
@@ -23,6 +25,8 @@ const App: React.FC = () => {
         return <FineList />;
       case 'reviews': 
         return <ReviewList />; 
+      case 'reports': // NOVA TELA
+        return <ReportSelector />; 
       default: 
         return <div>Tela não encontrada</div>;
     }

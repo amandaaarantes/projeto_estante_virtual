@@ -1,18 +1,16 @@
 import React from 'react';
 
 interface LayoutProps {
-  // O conteúdo principal da tela
+  // ATUALIZADO: Inclui 'reports'
   children: React.ReactNode; 
-  // Atualizado para aceitar 'loans', 'fines' e 'reviews'
-  onNavigate: (screen: 'users' | 'books' | 'loans' | 'fines' | 'reviews') => void; 
-  // Atualizado para aceitar 'loans', 'fines' e 'reviews'
-  currentScreen: 'users' | 'books' | 'loans' | 'fines' | 'reviews'; 
+  onNavigate: (screen: 'users' | 'books' | 'loans' | 'fines' | 'reviews' | 'reports') => void; 
+  currentScreen: 'users' | 'books' | 'loans' | 'fines' | 'reviews' | 'reports'; 
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onNavigate, currentScreen }) => {
 
   // Função auxiliar para estilizar os botões dinamicamente
-  const getButtonStyle = (screenName: 'users' | 'books' | 'loans' | 'fines' | 'reviews') => ({
+  const getButtonStyle = (screenName: 'users' | 'books' | 'loans' | 'fines' | 'reviews' | 'reports') => ({
     marginRight: '10px', 
     padding: '8px 12px',
     cursor: 'pointer',
@@ -36,40 +34,29 @@ const Layout: React.FC<LayoutProps> = ({ children, onNavigate, currentScreen }) 
       }}>
         <h1>📚 Estante Virtual</h1>
         <nav>
-          <button 
-            onClick={() => onNavigate('users')} 
-            style={getButtonStyle('users')}
-          >
+          <button onClick={() => onNavigate('users')} style={getButtonStyle('users')}>
             Usuários
           </button>
 
-          <button 
-            onClick={() => onNavigate('books')}
-            style={getButtonStyle('books')}
-          >
+          <button onClick={() => onNavigate('books')} style={getButtonStyle('books')}>
             Livros
           </button>
 
-          <button 
-            onClick={() => onNavigate('loans')}
-            style={getButtonStyle('loans')}
-          >
+          <button onClick={() => onNavigate('loans')} style={getButtonStyle('loans')}>
             Empréstimos
           </button>
 
-          <button 
-            onClick={() => onNavigate('fines')}
-            style={getButtonStyle('fines')}
-          >
+          <button onClick={() => onNavigate('fines')} style={getButtonStyle('fines')}>
             Multas
           </button>
           
-          {/* NOVO BOTÃO DE NAVEGAÇÃO */}
-          <button 
-            onClick={() => onNavigate('reviews')}
-            style={getButtonStyle('reviews')}
-          >
+          <button onClick={() => onNavigate('reviews')} style={getButtonStyle('reviews')}>
             Avaliações
+          </button>
+          
+          {/* NOVO BOTÃO DE NAVEGAÇÃO: RELATÓRIOS */}
+          <button onClick={() => onNavigate('reports')} style={getButtonStyle('reports')}>
+            Emitir Relatório
           </button>
           
         </nav>
