@@ -62,53 +62,176 @@ const UserForm: React.FC<UserFormProps> = ({ userToEdit, onUserSaved, onCancel }
             setLoading(false);
         }
     };
+    
+    // ESTILOS COPIADOS DO FineForm.tsx
+    const containerStyle: React.CSSProperties = {
+        border: '1px solid #ccc', 
+        borderRadius: '8px',      
+        padding: '20px',          
+        marginBottom: '20px',     
+        backgroundColor: '#f9f9f9', 
+        boxShadow: '0 2px 5px rgba(0,0,0,0.05)' 
+    };
+
+    const inputStyle: React.CSSProperties = {
+        width: '100%',
+        padding: '10px',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        boxSizing: 'border-box'
+    };
+
+    const labelStyle: React.CSSProperties = {
+        display: 'block',
+        marginBottom: '5px',
+        fontWeight: 'bold',
+        fontSize: '0.9em',
+        color: '#555'
+    };
+
 
     return (
-        <div style={{ padding: '20px', border: '1px solid #007bff', marginBottom: '20px' }}>
-            <h4>{isEditing ? `Editar Usuário: ${userToEdit?.nickname}` : 'Cadastro de Novo Usuário'}</h4>
+        <div style={containerStyle}>
+            <h3 style={{ marginTop: 0, marginBottom: '15px', color: '#333' }}>
+                {isEditing ? `Editar Usuário: ${userToEdit?.nickname}` : 'Cadastro de Novo Usuário'}
+            </h3>
             <form onSubmit={handleSubmit}>
                 
-                <input name="nome" value={userData.nome} onChange={handleChange} placeholder="Nome do Usuário" required /><br/>
-                
-                {/* CORREÇÃO: Removido disabled={isEditing} para cumprir o RF3 */}
-                <input 
-                    name="nickname" 
-                    value={userData.nickname} 
-                    onChange={handleChange} 
-                    placeholder="Apelido/Nickname (Único)" 
-                    required 
-                /><br/>
+                {/* Linha 1: Nome, Apelido, Email */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px', marginBottom: '15px' }}>
+                    <div>
+                        <label style={labelStyle}>Nome do Usuário</label>
+                        <input 
+                            name="nome" 
+                            value={userData.nome} 
+                            onChange={handleChange} 
+                            placeholder="Nome do Usuário" 
+                            required 
+                            style={inputStyle}
+                        />
+                    </div>
+                    
+                    <div>
+                        <label style={labelStyle}>Apelido/Nickname (Único)</label>
+                        <input 
+                            name="nickname" 
+                            value={userData.nickname} 
+                            onChange={handleChange} 
+                            placeholder="Apelido/Nickname (Único)" 
+                            required 
+                            style={inputStyle}
+                        />
+                    </div>
 
-                <input name="email" value={userData.email} onChange={handleChange} type="email" placeholder="Email" required /><br/>
-                <input name="telefone" value={userData.telefone} onChange={handleChange} placeholder="Telefone (XX)XXXXX-XXXX" required /><br/>
-                <input name="endereco" value={userData.endereco} onChange={handleChange} placeholder="Endereço" required /><br/>
-                
-                <div style={{fontSize: '0.8em', color: 'gray', marginTop: '5px'}}>
-                    * Senha deve ter 8+ caracteres, com maiúscula, minúscula, número e especial.
+                    <div>
+                        <label style={labelStyle}>Email</label>
+                        <input 
+                            name="email" 
+                            value={userData.email} 
+                            onChange={handleChange} 
+                            type="email" 
+                            placeholder="Email" 
+                            required 
+                            style={inputStyle}
+                        />
+                    </div>
                 </div>
-                <input 
-                    name="senha" 
-                    value={userData.senha} 
-                    onChange={handleChange} 
-                    type="password" 
-                    placeholder={isEditing ? "Nova Senha (vazio = manter)" : "Senha Forte"}
-                    required={!isEditing}
-                /><br/>
+
+                {/* Linha 2: Telefone, Endereço */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
+                    <div>
+                        <label style={labelStyle}>Telefone</label>
+                        <input 
+                            name="telefone" 
+                            value={userData.telefone} 
+                            onChange={handleChange} 
+                            placeholder="Telefone (XX)XXXXX-XXXX" 
+                            required 
+                            style={inputStyle}
+                        />
+                    </div>
+
+                    <div>
+                        <label style={labelStyle}>Endereço</label>
+                        <input 
+                            name="endereco" 
+                            value={userData.endereco} 
+                            onChange={handleChange} 
+                            placeholder="Endereço" 
+                            required 
+                            style={inputStyle}
+                        />
+                    </div>
+                </div>
                 
-                <select name="perfil" value={userData.perfil} onChange={handleChange} required>
-                    <option value="Usuário">Usuário</option>
-                    <option value="Bibliotecário">Bibliotecário</option>
-                    <option value="Administrador">Administrador</option>
-                </select><br/>
+                {/* Linha 3: Senha e Perfil */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '20px' }}>
+                    <div>
+                        <label style={labelStyle}>Senha Forte</label>
+                        <div style={{fontSize: '0.8em', color: '#6c757d', marginBottom: '5px'}}>
+                            * Senha deve ter 8+ caracteres, com maiúscula, minúscula, número e especial.
+                        </div>
+                        <input 
+                            name="senha" 
+                            value={userData.senha} 
+                            onChange={handleChange} 
+                            type="password" 
+                            placeholder={isEditing ? "Nova Senha (vazio = manter)" : "Senha Forte"}
+                            required={!isEditing}
+                            style={inputStyle}
+                        />
+                    </div>
+
+                    <div>
+                        <label style={labelStyle}>Perfil</label>
+                        <select 
+                            name="perfil" 
+                            value={userData.perfil} 
+                            onChange={handleChange} 
+                            required
+                            style={{...inputStyle, height: '41px'}} // Ajuste fino de altura
+                        >
+                            <option value="Usuário">Usuário</option>
+                            <option value="Bibliotecário">Bibliotecário</option>
+                            <option value="Administrador">Administrador</option>
+                        </select>
+                    </div>
+                </div>
                 
                 {error && <p style={{ color: 'red' }}>Erro: {error}</p>}
                 
-                <button type="submit" disabled={loading} style={{ marginRight: '10px' }}>
-                    {loading ? 'Salvando...' : (isEditing ? 'Salvar Edição' : 'Cadastrar')}
-                </button>
-                <button type="button" onClick={onCancel}>
-                    Cancelar
-                </button>
+                {/* Botões - Estilos copiados do FineForm.tsx */}
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <button 
+                        type="submit" 
+                        disabled={loading}
+                        style={{
+                            padding: '10px 20px',
+                            backgroundColor: '#007bff',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontWeight: 'bold'
+                        }}
+                    >
+                        {loading ? 'Salvando...' : (isEditing ? 'Salvar Edição' : 'Cadastrar')}
+                    </button>
+                    <button 
+                        type="button" 
+                        onClick={onCancel}
+                        style={{
+                            padding: '10px 20px',
+                            backgroundColor: '#6c757d',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Cancelar
+                    </button>
+                </div>
             </form>
         </div>
     );
